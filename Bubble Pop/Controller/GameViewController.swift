@@ -42,9 +42,10 @@ class GameViewController: UIViewController {
     }
     
     @objc func generateBubble() {
-        let bubble = Bubble(UIColor.red)
+        let colors = [UIColor.red, UIColor.green, UIColor.blue]
+        let bubble = Bubble(backgroundColor: colors.randomElement()!, frame: CGRect(x: 100, y: 0, width: 15, height: 15))
         bubble.animation()
-        bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
+        //bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
         self.view.addSubview(bubble)
     }
     

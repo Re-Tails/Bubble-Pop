@@ -86,66 +86,66 @@
                                     <segue destination="DUF-Eu-gkR" kind="show" identifier="goToGame" id="Qa9-SA-CTF"/>
                                 </connections>
                             </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gxr-Vy-bw8">
-                                <rect key="frame" x="160" y="238" width="94" height="32"/>
-                                <connections>
-                                    <action selector="stepperValueChanged:" destination="rSg-RC-qVw" eventType="valueChanged" id="g2L-0D-ZOg"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-uy-9eU">
-                                <rect key="frame" x="202" y="197.5" width="10.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-uy-9eU" userLabel="Bubble Count Label">
+                                <rect key="frame" x="202" y="252.5" width="10.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="15" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="pkp-1B-6ZG" userLabel="Bubble Count Slider">
+                                <rect key="frame" x="48" y="293" width="318" height="31"/>
+                                <imageReference key="minimumValueImage" image="0.circle" catalog="system" symbolScale="default"/>
+                                <imageReference key="maximumValueImage" image="15.circle.fill" catalog="system" symbolScale="default"/>
+                                <color key="thumbTintColor" systemColor="systemGrayColor"/>
+                                <connections>
+                                    <action selector="bubbleCountSliderValueChanged:" destination="rSg-RC-qVw" eventType="valueChanged" id="Q2G-ab-PCq"/>
+                                </connections>
+                            </slider>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rXn-it-sGC">
+                                <rect key="frame" x="0.0" y="373" width="414" height="150"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abf-Vh-dKD" userLabel="Minute Picker">
+                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="150"/>
+                                    </pickerView>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOK-PH-oGm" userLabel="Second Picker">
+                                        <rect key="frame" x="209.5" y="0.0" width="204.5" height="150"/>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ZiM-hJ-tQN"/>
+                                </constraints>
+                            </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-YY-EnQ">
-                                <rect key="frame" x="157" y="689" width="100" height="34"/>
+                                <rect key="frame" x="157" y="543" width="100" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="qdr-Ty-bBQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rXn-it-sGC">
-                                <rect key="frame" x="0.0" y="340" width="414" height="216"/>
-                                <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abf-Vh-dKD" userLabel="Minute Picker">
-                                        <rect key="frame" x="0.0" y="0.0" width="205" height="216"/>
-                                    </pickerView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOK-PH-oGm" userLabel="Second Picker">
-                                        <rect key="frame" x="210" y="0.0" width="204" height="216"/>
-                                    </pickerView>
-                                </subviews>
-                            </stackView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="0.0" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkp-1B-6ZG">
-                                <rect key="frame" x="86" y="278" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <imageReference key="minimumValueImage" image="0.circle" catalog="system" symbolScale="default"/>
-                                <imageReference key="maximumValueImage" image="15.circle.fill" catalog="system" symbolScale="default"/>
-                                <color key="thumbTintColor" systemColor="systemGrayColor"/>
-                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nsb-U8-4Hv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Wef-le-k4m" firstAttribute="top" secondItem="xLo-YY-EnQ" secondAttribute="bottom" constant="48" id="2uc-ZS-41a"/>
+                            <constraint firstItem="pkp-1B-6ZG" firstAttribute="top" secondItem="0hc-uy-9eU" secondAttribute="bottom" constant="20" id="2vA-OG-E28"/>
                             <constraint firstItem="0hc-uy-9eU" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="6rC-Pk-bco"/>
                             <constraint firstItem="rXn-it-sGC" firstAttribute="leading" secondItem="Wzz-8E-t0q" secondAttribute="leading" id="EHB-fI-0gf"/>
                             <constraint firstItem="Wef-le-k4m" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="JFX-2a-QzV"/>
-                            <constraint firstItem="Gxr-Vy-bw8" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="P7O-yp-12c"/>
+                            <constraint firstItem="nsb-U8-4Hv" firstAttribute="trailing" secondItem="pkp-1B-6ZG" secondAttribute="trailing" constant="50" id="NI9-pF-u8m"/>
                             <constraint firstItem="rXn-it-sGC" firstAttribute="centerY" secondItem="Wzz-8E-t0q" secondAttribute="centerY" id="XyU-OA-PgA"/>
+                            <constraint firstItem="rXn-it-sGC" firstAttribute="top" secondItem="pkp-1B-6ZG" secondAttribute="bottom" constant="50" id="bK1-We-Xo6"/>
+                            <constraint firstItem="pkp-1B-6ZG" firstAttribute="leading" secondItem="nsb-U8-4Hv" secondAttribute="leading" constant="50" id="fxI-l1-oFe"/>
                             <constraint firstItem="nsb-U8-4Hv" firstAttribute="bottom" secondItem="Wef-le-k4m" secondAttribute="bottom" constant="60" id="gKY-5Q-CMA"/>
-                            <constraint firstItem="Gxr-Vy-bw8" firstAttribute="top" secondItem="0hc-uy-9eU" secondAttribute="bottom" constant="20" id="hFp-7h-KTK"/>
-                            <constraint firstItem="Gxr-Vy-bw8" firstAttribute="top" secondItem="nsb-U8-4Hv" secondAttribute="top" constant="150" id="hnW-kv-DS9"/>
                             <constraint firstItem="xLo-YY-EnQ" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="kFb-GP-U0z"/>
                             <constraint firstItem="rXn-it-sGC" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="oBs-r6-riK"/>
                             <constraint firstAttribute="trailing" secondItem="rXn-it-sGC" secondAttribute="trailing" id="s3z-Vs-6W4"/>
+                            <constraint firstItem="xLo-YY-EnQ" firstAttribute="top" secondItem="rXn-it-sGC" secondAttribute="bottom" constant="20" id="w6h-se-AU0"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="nameText" destination="xLo-YY-EnQ" id="Bta-vU-c3h"/>
-                        <outlet property="timerLabel" destination="0hc-uy-9eU" id="MWG-e9-sKG"/>
-                        <outlet property="timerStepper" destination="Gxr-Vy-bw8" id="J8C-fv-h0V"/>
+                        <outlet property="bubbleCountLabel" destination="0hc-uy-9eU" id="7Gt-xM-c2k"/>
+                        <outlet property="minutePicker" destination="abf-Vh-dKD" id="HEN-Fa-MGa"/>
+                        <outlet property="secondPicker" destination="kOK-PH-oGm" id="bsJ-rn-vHO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LiF-Jg-7Zf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

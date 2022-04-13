@@ -10,23 +10,14 @@ import UIKit
 
 class Bubble:UIView {
     
-    var xPosition = 0
-    var yPosition = 0
-    /*
-     let window = UIApplication.shared.windows.first
-     let topPadding = window.safeAreaInsets.top
-     let bottomPadding = window.safeAreaInsets.bottom
-     */
-    
-    init(frame: CGRect, backgroundColor: UIColor) { //CHANGE THIS
+    init(backgroundColor: UIColor, frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = backgroundColor
-        self.frame = CGRect(x: xPosition, y: yPosition, width: 50, height: 50)
         self.layer.cornerRadius = self.bounds.size.width / 2
+        self.backgroundColor = backgroundColor
     }
     
     required init?(coder: NSCoder) {
-        <#code#>
+        super.init(coder: coder)
     }
    
     func animation() {
