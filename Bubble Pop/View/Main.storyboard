@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NuZ-9U-BKo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NuZ-9U-BKo">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -87,13 +87,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-uy-9eU" userLabel="Bubble Count Label">
-                                <rect key="frame" x="202" y="252.5" width="10.5" height="20.5"/>
+                                <rect key="frame" x="202" y="553" width="10.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="15" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="pkp-1B-6ZG" userLabel="Bubble Count Slider">
-                                <rect key="frame" x="48" y="293" width="318" height="31"/>
+                                <rect key="frame" x="48" y="583.5" width="318" height="31"/>
                                 <imageReference key="minimumValueImage" image="0.circle" catalog="system" symbolScale="default"/>
                                 <imageReference key="maximumValueImage" image="15.circle.fill" catalog="system" symbolScale="default"/>
                                 <color key="thumbTintColor" systemColor="systemGrayColor"/>
@@ -116,7 +116,7 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-YY-EnQ">
-                                <rect key="frame" x="157" y="543" width="100" height="34"/>
+                                <rect key="frame" x="157" y="239" width="100" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="qdr-Ty-bBQ"/>
                                 </constraints>
@@ -127,24 +127,25 @@
                         <viewLayoutGuide key="safeArea" id="nsb-U8-4Hv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pkp-1B-6ZG" firstAttribute="top" secondItem="0hc-uy-9eU" secondAttribute="bottom" constant="20" id="2vA-OG-E28"/>
                             <constraint firstItem="0hc-uy-9eU" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="6rC-Pk-bco"/>
                             <constraint firstItem="rXn-it-sGC" firstAttribute="leading" secondItem="Wzz-8E-t0q" secondAttribute="leading" id="EHB-fI-0gf"/>
                             <constraint firstItem="Wef-le-k4m" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="JFX-2a-QzV"/>
                             <constraint firstItem="nsb-U8-4Hv" firstAttribute="trailing" secondItem="pkp-1B-6ZG" secondAttribute="trailing" constant="50" id="NI9-pF-u8m"/>
+                            <constraint firstItem="0hc-uy-9eU" firstAttribute="top" secondItem="rXn-it-sGC" secondAttribute="bottom" constant="30" id="Uzq-QH-B3i"/>
                             <constraint firstItem="rXn-it-sGC" firstAttribute="centerY" secondItem="Wzz-8E-t0q" secondAttribute="centerY" id="XyU-OA-PgA"/>
-                            <constraint firstItem="rXn-it-sGC" firstAttribute="top" secondItem="pkp-1B-6ZG" secondAttribute="bottom" constant="50" id="bK1-We-Xo6"/>
+                            <constraint firstItem="rXn-it-sGC" firstAttribute="top" secondItem="xLo-YY-EnQ" secondAttribute="bottom" constant="100" id="bzw-sB-gtB"/>
                             <constraint firstItem="pkp-1B-6ZG" firstAttribute="leading" secondItem="nsb-U8-4Hv" secondAttribute="leading" constant="50" id="fxI-l1-oFe"/>
                             <constraint firstItem="nsb-U8-4Hv" firstAttribute="bottom" secondItem="Wef-le-k4m" secondAttribute="bottom" constant="60" id="gKY-5Q-CMA"/>
                             <constraint firstItem="xLo-YY-EnQ" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="kFb-GP-U0z"/>
                             <constraint firstItem="rXn-it-sGC" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="oBs-r6-riK"/>
+                            <constraint firstItem="pkp-1B-6ZG" firstAttribute="top" secondItem="0hc-uy-9eU" secondAttribute="bottom" constant="10" id="qXp-D3-Yv0"/>
                             <constraint firstAttribute="trailing" secondItem="rXn-it-sGC" secondAttribute="trailing" id="s3z-Vs-6W4"/>
-                            <constraint firstItem="xLo-YY-EnQ" firstAttribute="top" secondItem="rXn-it-sGC" secondAttribute="bottom" constant="20" id="w6h-se-AU0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bubbleCountLabel" destination="0hc-uy-9eU" id="7Gt-xM-c2k"/>
                         <outlet property="minutePicker" destination="abf-Vh-dKD" id="HEN-Fa-MGa"/>
+                        <outlet property="nameTextField" destination="xLo-YY-EnQ" id="IYK-Ti-ZRP"/>
                         <outlet property="secondPicker" destination="kOK-PH-oGm" id="bsJ-rn-vHO"/>
                     </connections>
                 </viewController>
