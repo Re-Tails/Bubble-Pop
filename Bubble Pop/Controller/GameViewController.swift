@@ -6,6 +6,7 @@ class GameViewController: UIViewController {
     
     var name: String?
     var remainingTime = 60
+    var maxBubbles:Int = 15
     var timer = Timer()
 
     

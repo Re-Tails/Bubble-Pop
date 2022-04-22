@@ -78,7 +78,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wef-le-k4m">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wef-le-k4m">
                                 <rect key="frame" x="158.5" y="771" width="97.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Start Game"/>
@@ -86,15 +86,15 @@
                                     <segue destination="DUF-Eu-gkR" kind="show" identifier="goToGame" id="Qa9-SA-CTF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-uy-9eU" userLabel="Bubble Count Label">
-                                <rect key="frame" x="202" y="553" width="10.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-uy-9eU" userLabel="Bubble Count Label">
+                                <rect key="frame" x="198" y="553" width="18" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="15" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="pkp-1B-6ZG" userLabel="Bubble Count Slider">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="1" maxValue="15" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="pkp-1B-6ZG" userLabel="Bubble Count Slider">
                                 <rect key="frame" x="48" y="583.5" width="318" height="31"/>
-                                <imageReference key="minimumValueImage" image="0.circle" catalog="system" symbolScale="default"/>
+                                <imageReference key="minimumValueImage" image="1.circle" catalog="system" symbolScale="default"/>
                                 <imageReference key="maximumValueImage" image="15.circle.fill" catalog="system" symbolScale="default"/>
                                 <color key="thumbTintColor" systemColor="systemGrayColor"/>
                                 <connections>
@@ -116,12 +116,15 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-YY-EnQ">
-                                <rect key="frame" x="157" y="239" width="100" height="34"/>
+                                <rect key="frame" x="157" y="279" width="100" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="qdr-Ty-bBQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameTextFieldEditingChanged:" destination="rSg-RC-qVw" eventType="editingChanged" id="GXH-Vc-hjK"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nsb-U8-4Hv"/>
@@ -133,7 +136,7 @@
                             <constraint firstItem="nsb-U8-4Hv" firstAttribute="trailing" secondItem="pkp-1B-6ZG" secondAttribute="trailing" constant="50" id="NI9-pF-u8m"/>
                             <constraint firstItem="0hc-uy-9eU" firstAttribute="top" secondItem="rXn-it-sGC" secondAttribute="bottom" constant="30" id="Uzq-QH-B3i"/>
                             <constraint firstItem="rXn-it-sGC" firstAttribute="centerY" secondItem="Wzz-8E-t0q" secondAttribute="centerY" id="XyU-OA-PgA"/>
-                            <constraint firstItem="rXn-it-sGC" firstAttribute="top" secondItem="xLo-YY-EnQ" secondAttribute="bottom" constant="100" id="bzw-sB-gtB"/>
+                            <constraint firstItem="rXn-it-sGC" firstAttribute="top" secondItem="xLo-YY-EnQ" secondAttribute="bottom" constant="60" id="bzw-sB-gtB"/>
                             <constraint firstItem="pkp-1B-6ZG" firstAttribute="leading" secondItem="nsb-U8-4Hv" secondAttribute="leading" constant="50" id="fxI-l1-oFe"/>
                             <constraint firstItem="nsb-U8-4Hv" firstAttribute="bottom" secondItem="Wef-le-k4m" secondAttribute="bottom" constant="60" id="gKY-5Q-CMA"/>
                             <constraint firstItem="xLo-YY-EnQ" firstAttribute="centerX" secondItem="Wzz-8E-t0q" secondAttribute="centerX" id="kFb-GP-U0z"/>
@@ -147,6 +150,7 @@
                         <outlet property="minutePicker" destination="abf-Vh-dKD" id="HEN-Fa-MGa"/>
                         <outlet property="nameTextField" destination="xLo-YY-EnQ" id="IYK-Ti-ZRP"/>
                         <outlet property="secondPicker" destination="kOK-PH-oGm" id="bsJ-rn-vHO"/>
+                        <outlet property="startGameButton" destination="Wef-le-k4m" id="sXL-ZO-GlP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LiF-Jg-7Zf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -205,7 +209,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0.circle" catalog="system" width="128" height="121"/>
+        <image name="1.circle" catalog="system" width="128" height="121"/>
         <image name="15.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

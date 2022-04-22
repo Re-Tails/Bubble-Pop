@@ -6,10 +6,27 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet weak var bubbleCountLabel: UILabel!
     @IBOutlet weak var minutePicker: UIPickerView!
     @IBOutlet weak var secondPicker: UIPickerView!
+    @IBOutlet weak var startGameButton: UIButton!
     
     let minutes = Array(0...5)
     let seconds = Array(0...59)
+    var selectedMinutes:Int = 0
+    var selectedSeconds:Int = 60
+    var enteredName:String = ""
     
+    @IBAction func nameTextFieldEditingChanged(_ sender: UITextField) {
+        enteredName = sender.text!
+        checkStartConditions()
+    }
+    func checkStartConditions() {
+        if !(selectedMinutes == 0 && selectedSeconds == 0) && !enteredName.isEmpty {
+            startGameButton.isEnabled = true
+        }
+        else {
+            startGameButton.isEnabled = false
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,13 +54,24 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
         if pickerView == minutePicker {
+            selectedMinutes = minutes[row]
             return String(minutes[row]) + " min"
         }
         else if pickerView == secondPicker {
+            selectedSeconds = seconds[row]
             return String(seconds[row]) + " sec"
         }
             return ""
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == minutePicker {
+            selectedMinutes = minutes[row]
+        }
+        else if pickerView == secondPicker {
+            selectedSeconds = seconds[row]
+        }
+        checkStartConditions()
+     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -57,10 +85,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToGame" {
             let VC = segue.destination as! GameViewController
-            /*
-            VC.name = nameTextField.text!
-            VC.remainingTime = Int(timeSlider.value)
-             */
+            VC.name = enteredName
+            VC.remainingTime = Int(selectedMinutes * 60 + selectedSeconds)
+            VC.maxBubbles = Int(bubbleCountLabel.text!)!
         }
     }
     
