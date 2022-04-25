@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Bubble:UIView {
+class Bubble:UIControl {
     
     init(backgroundColor: UIColor, frame: CGRect) {
         super.init(frame: frame)
