@@ -47,9 +47,7 @@ class GameViewController: UIViewController {
             let vc = storyboard?.instantiateViewController(identifier: "HighScoreViewController") as! HighScoreViewController
             self.navigationController?.pushViewController(vc, animated: true)
             vc.navigationItem.setHidesBackButton(true, animated: true)
-            
-            
-            
+
         }
     }
     
@@ -77,22 +75,34 @@ class GameViewController: UIViewController {
     }
     
     @objc func generateBubble() {
-        if currentBubbles < maxBubbles {
-            var xPos:CGFloat = 0.0
-            var yPos:CGFloat = 0.0
-            repeat {
-                xPos = CGFloat(Int.random(in: 30...bubblesViewWidth-30))
-                yPos = CGFloat(Int.random(in: 30...bubblesViewHeight-30))
-                print("x: " + String(Float(xPos)))
-                print("y: " + String(Float(yPos)))
-            } while(checkOverlap(x: xPos, y: yPos, view: bubblesView, offset: BUBBLE_WIDTH_HEIGHT*2))
+        
+        for v in bubblesView.subviews {
+            if Bool.random() {
+                v.removeFromSuperview()
+                currentBubbles = currentBubbles - 1
+            }
             
-            let bubble = Bubble(backgroundColor: selectColor(), frame: CGRect(x: xPos, y: yPos, width: BUBBLE_WIDTH_HEIGHT, height: BUBBLE_WIDTH_HEIGHT))
-            bubble.animation()
-            bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
-            bubblesView.addSubview(bubble)
-            currentBubbles = currentBubbles + 1
         }
+        
+        if currentBubbles < maxBubbles {
+            for _ in (0...Int.random(in: 0...(maxBubbles-currentBubbles))) {
+                var xPos:CGFloat = 0.0
+                var yPos:CGFloat = 0.0
+                repeat {
+                    xPos = CGFloat(Int.random(in: 30...bubblesViewWidth-30))
+                    yPos = CGFloat(Int.random(in: 30...bubblesViewHeight-30))
+                    print("x: " + String(Float(xPos)))
+                    print("y: " + String(Float(yPos)))
+                } while(checkOverlap(x: xPos, y: yPos, view: bubblesView, offset: BUBBLE_WIDTH_HEIGHT*2))
+                
+                let bubble = Bubble(backgroundColor: selectColor(), frame: CGRect(x: xPos, y: yPos, width: BUBBLE_WIDTH_HEIGHT, height: BUBBLE_WIDTH_HEIGHT))
+                bubble.animation()
+                bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
+                bubblesView.addSubview(bubble)
+                currentBubbles = currentBubbles + 1
+            }
+        }
+        
         
     }
     
@@ -115,23 +125,30 @@ class GameViewController: UIViewController {
         return selectedColor
     }
     
+    var previousBubbleColor:UIColor = .clear
     @IBAction func bubblePressed(_ sender: Bubble) {
         // remove pressed bubble from view
         sender.removeFromSuperview()
         currentBubbles = currentBubbles - 1
+        var scoreIncrease:Float = 0
         switch(sender.backgroundColor!) {
         case .red:
-            currentScore = currentScore + 1
+            scoreIncrease = scoreIncrease + 1
         case .green:
-            currentScore = currentScore + 5
+            scoreIncrease = scoreIncrease + 5
         case .blue:
-            currentScore = currentScore + 8
+            scoreIncrease = scoreIncrease + 8
         case .black:
-            currentScore = currentScore + 10
+            scoreIncrease = scoreIncrease + 10
         default:
             //equivalent to pink
-            currentScore = currentScore + 2
+            scoreIncrease = scoreIncrease + 2
         }
+        if sender.backgroundColor! == previousBubbleColor {
+            scoreIncrease = scoreIncrease * 1.5
+        }
+        currentScore = currentScore + Int(scoreIncrease.rounded(.toNearestOrEven))
+        previousBubbleColor = sender.backgroundColor!
         scoreLabel.text = "Score: " + String(currentScore)
     }
     
