@@ -10,8 +10,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     let minutes = Array(0...5)
     let seconds = Array(0...59)
-    var selectedMinutes:Int = 0
-    var selectedSeconds:Int = 60
+    var selectedMinutes:Int = 1
+    var selectedSeconds:Int = 0
     var enteredName:String = ""
     
     @IBAction func nameTextFieldEditingChanged(_ sender: UITextField) {
@@ -35,6 +35,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         secondPicker.dataSource = self
         secondPicker.delegate = self
         nameTextField.delegate = self
+        minutePicker.selectRow(1, inComponent: 0, animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

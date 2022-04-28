@@ -11,6 +11,8 @@ class GameViewController: UIViewController {
 
     var bubblesViewWidth:Int = 0
     var bubblesViewHeight:Int = 0
+    
+    let BUBBLE_WIDTH_HEIGHT:CGFloat = 20.0
 
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeLeftLabel: UILabel!
@@ -51,9 +53,41 @@ class GameViewController: UIViewController {
         }
     }
     
+    func checkOverlap(x: CGFloat, y: CGFloat, view: UIView, offset: CGFloat) -> Bool{
+        for case let bubble as Bubble in view.subviews {
+            let current_x = bubble.frame.origin.x
+            let current_y = bubble.frame.origin.y
+            /*
+            print("x: " + String(Float(x)))
+            print("Current x: " + String(Float(current_x)))
+            print("x: " + String(Float(x)))
+            print("Current y: " + String(Float(current_y)))
+            print("Subviews count:" + String(view.subviews.count))
+             */
+            
+            if((x >= current_x - offset && x <= current_x + offset) && (y >= current_y - offset && y <= current_y + offset)){
+                //OVERLAP
+                print("overlap")
+                return true
+            }
+        }
+        // NO OVERLAP
+        print("no overlap")
+        return false
+    }
+    
     @objc func generateBubble() {
         if currentBubbles < maxBubbles {
-            let bubble = Bubble(backgroundColor: selectColor(), frame: CGRect(x: Int.random(in: 30...bubblesViewWidth-30), y: Int.random(in: 30...bubblesViewHeight-30), width: 20, height: 20))
+            var xPos:CGFloat = 0.0
+            var yPos:CGFloat = 0.0
+            repeat {
+                xPos = CGFloat(Int.random(in: 30...bubblesViewWidth-30))
+                yPos = CGFloat(Int.random(in: 30...bubblesViewHeight-30))
+                print("x: " + String(Float(xPos)))
+                print("y: " + String(Float(yPos)))
+            } while(checkOverlap(x: xPos, y: yPos, view: bubblesView, offset: BUBBLE_WIDTH_HEIGHT*2))
+            
+            let bubble = Bubble(backgroundColor: selectColor(), frame: CGRect(x: xPos, y: yPos, width: BUBBLE_WIDTH_HEIGHT, height: BUBBLE_WIDTH_HEIGHT))
             bubble.animation()
             bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
             bubblesView.addSubview(bubble)
